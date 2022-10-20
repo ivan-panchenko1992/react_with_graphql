@@ -7,7 +7,9 @@ function App() {
   const [workers, setWorkers] = useState([]);
   const [workerId, setWorkerId] = useState('');
   const [worker, setWorker] = useState(null);
-  const { data, loading, error, refetch } = useQuery(GET_ALL_WORKERS);
+  const { data, loading, error, refetch } = useQuery(GET_ALL_WORKERS, {
+    pollInterval: 1000,
+  });
   const { data: workerOne, loading: workerLoading } = useQuery(GET_WORKER, {
     variables: {
       id: workerId ? +workerId : null,
